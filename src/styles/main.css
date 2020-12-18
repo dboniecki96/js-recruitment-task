@@ -60,6 +60,17 @@
   margin-bottom: 5px;
 }
 
+.items-not-found {
+  font-size: 22px;
+  font-weight: bold;
+  color: indianred;
+}
+
+#loading {
+  font-size: 22px;
+  font-weight: bold;
+}
+
 /* Larger than mobile screen */
 @media (min-width: 40rem) {
   .appTitle {

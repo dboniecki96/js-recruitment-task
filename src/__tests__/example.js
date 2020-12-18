@@ -1,12 +1,4 @@
-import {
-    getByLabelText,
-    getByText,
-    getByTestId,
-    queryByTestId,
-    // Tip: all queries are also exposed on an object
-    // called "queries" which you could import here as well
-    waitFor,
-} from '@testing-library/dom';
+import { getByLabelText, getByTestId, getByText, queryByTestId, waitFor } from '@testing-library/dom';
 import '@testing-library/jest-dom/extend-expect';
 
 function getExampleDOM() {
@@ -15,19 +7,19 @@ function getExampleDOM() {
     // framework of choice 😉
     const div = document.createElement('div');
     div.innerHTML = `
-        <label for="username">Username</label>
-        <input id="username" />
+        <label for='username'>Username</label>
+        <input id='username' />
         <button>Print Username</button>
     `;
     const button = div.querySelector('button');
     const input = div.querySelector('input');
     button.addEventListener('click', () => {
-    // let's pretend this is making a server request, so it's async
-    // (you'd want to mock this imaginary request in your unit tests)...
+        // let's pretend this is making a server request, so it's async
+        // (you'd want to mock this imaginary request in your unit tests)...
         setTimeout(() => {
             const printedUsernameContainer = document.createElement('div');
             printedUsernameContainer.innerHTML = `
-                <div data-testid="printed-username">${input.value}</div>
+                <div data-testid='printed-username'>${input.value}</div>
             `;
             div.appendChild(printedUsernameContainer);
         }, Math.floor(Math.random() * 200));
@@ -48,12 +40,12 @@ test('examples of some things', async () => {
     getByText(container, 'Print Username').click();
 
     await waitFor(() =>
-        expect(queryByTestId(container, 'printed-username')).toBeTruthy()
+        expect(queryByTestId(container, 'printed-username')).toBeTruthy(),
     );
 
     // getByTestId and queryByTestId are an escape hatch to get elements
     // by a test id (could also attempt to get this element by its text)
     expect(getByTestId(container, 'printed-username')).toHaveTextContent(
-        famousWomanInHistory
+        famousWomanInHistory,
     );
 });

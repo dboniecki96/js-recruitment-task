@@ -90,4 +90,7 @@ typings/
 # Build
 dist
 
+# Webstorm settings files
+.idea
+
 # End of https://www.gitignore.io/api/node
